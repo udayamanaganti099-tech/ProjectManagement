@@ -25,11 +25,25 @@ public class DatabaseConfig {
         HikariConfig config = new HikariConfig();
         
         if (databaseUrl != null && !databaseUrl.trim().isEmpty()) {
-            // Automatically fix the Render URL format!
             if (databaseUrl.startsWith("postgres://")) {
-                databaseUrl = databaseUrl.replaceFirst("postgres://", "jdbc:postgresql://");
+                try {
+                    java.net.URI dbUri = new java.net.URI(databaseUrl);
+                    String[] userInfo = dbUri.getUserInfo().split(":");
+                    String dbUsername = userInfo[0];
+                    String dbPassword = userInfo[1];
+                    String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+                    
+                    config.setJdbcUrl(dbUrl);
+                    config.setUsername(dbUsername);
+                    config.setPassword(dbPassword);
+                } catch (Exception e) {
+                    throw new RuntimeException("Failed to parse DATABASE_URL", e);
+                }
+            } else {
+                config.setJdbcUrl(databaseUrl);
+                if (username != null && !username.trim().isEmpty()) config.setUsername(username);
+                if (password != null && !password.trim().isEmpty()) config.setPassword(password);
             }
-            config.setJdbcUrl(databaseUrl);
         } else {
             // Local development fallback
             config.setJdbcUrl("jdbc:postgresql://localhost:5432/project_management");
