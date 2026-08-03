@@ -1,0 +1,379 @@
+/* ============================================================
+   ProjectFlow - Simple Clean Light Mode Design System
+   A beginner-friendly, professional CSS for a Java Full Stack
+   portfolio project targeting service-based MNC roles.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* --- CSS Variables (Single Source of Truth) --- */
+:root {
+  --white:   #ffffff;
+  --bg:      #f4f6f9;       /* Page background - very light grey-blue */
+  --card:    #ffffff;       /* Card / panel background */
+  --border:  #dde3ec;       /* Borders */
+
+  --text-dark:   #1a2236;   /* Headings - near black, very readable */
+  --text-body:   #374151;   /* Body text - dark grey */
+  --text-muted:  #6b7280;   /* Labels, captions */
+  --text-placeholder: #9ca3af;
+
+  --primary:       #3b5bdb; /* Indigo blue - brand color */
+  --primary-light: #e8eeff; /* Tinted backgrounds */
+  --primary-dark:  #2f4ac0;
+
+  --green:      #2f9e44;
+  --green-bg:   #ebfbee;
+  --green-border:#b2f2bb;
+
+  --amber:      #e67700;
+  --amber-bg:   #fff9db;
+  --amber-border:#ffe066;
+
+  --red:        #c92a2a;
+  --red-bg:     #fff5f5;
+  --red-border: #ffa8a8;
+
+  --purple:     #7048e8;
+  --purple-bg:  #f3f0ff;
+  --purple-border:#d0bfff;
+
+  --cyan:       #0c8599;
+  --cyan-bg:    #e3fafc;
+  --cyan-border:#99e9f2;
+
+  --radius-sm: 5px;
+  --radius:    8px;
+  --radius-lg: 12px;
+
+  --shadow-sm:   0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.07);
+  --shadow-modal:0 8px 30px rgba(0,0,0,0.12);
+}
+
+/* --- Reset --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: var(--bg);
+  color: var(--text-body);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* --- App Layout --- */
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.content-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 28px 32px;
+}
+
+/* --- Typography --- */
+h1 { font-size: 1.5rem;  font-weight: 700; color: var(--text-dark); }
+h2 { font-size: 1.25rem; font-weight: 700; color: var(--text-dark); }
+h3 { font-size: 1.05rem; font-weight: 600; color: var(--text-dark); }
+h4 { font-size: 0.9rem;  font-weight: 600; color: var(--text-dark); }
+p  { color: var(--text-body); }
+
+.page-title    { font-size: 1.45rem; font-weight: 700; color: var(--text-dark); }
+.page-subtitle { font-size: 0.84rem; color: var(--text-muted); margin-top: 3px; }
+.page-header   { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+
+/* --- Card --- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+}
+
+/* keep glass-card as an alias */
+.glass-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+}
+
+/* --- Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
+  text-decoration: none;
+  outline: none;
+  line-height: 1;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+.btn-primary:hover { background: var(--primary-dark); border-color: var(--primary-dark); }
+
+.btn-secondary {
+  background: var(--white);
+  color: var(--text-dark);
+  border-color: var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.btn-secondary:hover { background: var(--bg); border-color: #b0bad0; }
+
+.btn-accent {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-color: #c5d0f5;
+}
+.btn-accent:hover { background: #d8e1ff; }
+
+.btn-sm { padding: 5px 11px; font-size: 0.78rem; }
+
+/* --- Badges --- */
+.badge {
+  display: inline-block;
+  padding: 3px 9px;
+  font-size: 0.71rem;
+  font-weight: 700;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Status */
+.badge-completed,
+.badge-active      { background: var(--green-bg);  color: var(--green);  border-color: var(--green-border); }
+.badge-in_progress { background: var(--primary-light); color: var(--primary); border-color: #c5d0f5; }
+.badge-in_review   { background: var(--purple-bg); color: var(--purple); border-color: var(--purple-border); }
+.badge-backlog,
+.badge-planning    { background: #f3f4f6;           color: #4b5563;       border-color: #d1d5db; }
+.badge-on_hold     { background: var(--amber-bg);   color: var(--amber);  border-color: var(--amber-border); }
+
+/* Priority */
+.badge-low    { background: var(--green-bg);  color: var(--green);  border-color: var(--green-border); }
+.badge-medium { background: var(--amber-bg);  color: var(--amber);  border-color: var(--amber-border); }
+.badge-high   { background: #fff4e6;          color: #d6480b;       border-color: #ffc078; }
+.badge-urgent { background: var(--red-bg);    color: var(--red);    border-color: var(--red-border); }
+
+/* Role */
+.badge-admin           { background: var(--red-bg);     color: var(--red);    border-color: var(--red-border); }
+.badge-project_manager { background: var(--green-bg);   color: var(--green);  border-color: var(--green-border); }
+.badge-developer       { background: var(--primary-light); color: var(--primary); border-color: #c5d0f5; }
+
+/* --- Forms --- */
+.form-group  { margin-bottom: 14px; }
+.form-label  { display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-body); margin-bottom: 5px; }
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 8px 11px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-dark);
+  font-size: 0.85rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.form-input::placeholder,
+.form-textarea::placeholder { color: var(--text-placeholder); }
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(59, 91, 219, 0.12);
+}
+.form-select option { background: var(--white); color: var(--text-dark); }
+
+/* --- Progress Bar --- */
+.progress-bar-bg {
+  width: 100%;
+  height: 7px;
+  background: #e9ecef;
+  border-radius: 99px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), #74c0fc);
+  border-radius: 99px;
+  transition: width 0.3s ease;
+}
+
+/* --- Metrics Grid --- */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.metric-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.metric-val {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-top: 4px;
+}
+.metric-icon-box {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+/* --- Kanban Board --- */
+.kanban-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+@media (max-width: 1100px) { .kanban-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 640px)  { .kanban-grid { grid-template-columns: 1fr; } }
+
+.kanban-column {
+  background: #f0f2f5;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+.column-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.column-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+.task-count-pill {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 1px 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.task-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 13px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.12s, box-shadow 0.12s, border-color 0.12s;
+}
+.task-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+  border-color: var(--primary);
+}
+
+/* --- Modals --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.35);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+.modal-content {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 660px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 28px;
+  box-shadow: var(--shadow-modal);
+  color: var(--text-body);
+}
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 20px;
+}
+.modal-header h2 { color: var(--text-dark); }
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0 4px;
+  flex-shrink: 0;
+}
+.close-btn:hover { color: var(--text-dark); }
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar          { width: 5px; height: 5px; }
+::-webkit-scrollbar-track    { background: var(--bg); }
+::-webkit-scrollbar-thumb    { background: #c1c9d6; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #9aa3b2; }

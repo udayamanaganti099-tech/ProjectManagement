@@ -1,0 +1,42 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api/v1
+
+spring:
+  application:
+    name: project-management-backend
+
+  # ── MySQL Database (MySQL Workbench) ──────────────────────────
+  datasource:
+    url: jdbc:mysql://localhost:3306/project_management?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC&createDatabaseIfNotExist=true
+    username: root
+    password: UDAYreddy1210@
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # ── JPA / Hibernate ───────────────────────────────────────────
+  jpa:
+    hibernate:
+      ddl-auto: update          # Creates tables on first run, updates schema on changes
+    show-sql: true
+    defer-datasource-initialization: true   # Run data.sql AFTER Hibernate creates tables
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+
+  # ── Seed Data (data.sql) ──────────────────────────────────────
+  sql:
+    init:
+      mode: always              # Runs data.sql every startup (INSERT IGNORE skips duplicates)
+
+app:
+  jwt:
+    secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+    expiration-ms: 86400000     # 24 Hours
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
