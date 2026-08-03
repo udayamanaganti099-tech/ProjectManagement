@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { AuthProvider, useAuth } from './context/AuthContext';
-import { Navbar } from './components/Navbar';
-import { Sidebar } from './components/Sidebar';
-import { Dashboard } from './components/Dashboard';
-import { KanbanBoard } from './components/KanbanBoard';
-import { ProjectList } from './components/ProjectList';
-import { TeamList } from './components/TeamList';
-import { TaskModal } from './components/TaskModal';
-import { NewProjectModal } from './components/NewProjectModal';
-import { NewTaskModal } from './components/NewTaskModal';
+import { Navbar } from './components/Navbar.jsx';
+import { Sidebar } from './components/Sidebar.jsx';
+import { Dashboard } from './components/Dashboard.jsx';
+import { KanbanBoard } from './components/KanbanBoard.jsx';
+import { ProjectList } from './components/ProjectList.jsx';
+import { TeamList } from './components/TeamList.jsx';
+import { TaskModal } from './components/TaskModal.jsx';
+import { NewProjectModal } from './components/NewProjectModal.jsx';
+import { NewTaskModal } from './components/NewTaskModal.jsx';
 
-import { LoginModal } from './components/LoginModal';
-import { LoginScreen } from './components/LoginScreen';
+import { LoginModal } from './components/LoginModal.jsx';
+import { LoginScreen } from './components/LoginScreen.jsx';
 // CSS is loaded globally via main.jsx
 
 function MainLayout() {
