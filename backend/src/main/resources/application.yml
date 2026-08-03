@@ -28,7 +28,8 @@ spring:
   # ── Seed Data (data.sql) ──────────────────────────────────────
   sql:
     init:
-      mode: always              # Runs data.sql every startup (INSERT IGNORE skips duplicates)
+      mode: always              # Runs data.sql every startup
+      continue-on-error: true   # Ensures backend never crashes if seed data already exists
 
 app:
   jwt:
