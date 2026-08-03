@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: projectflow-backend
+    env: docker
+    dockerfilePath: backend/Dockerfile
+    plan: free
+    envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: projectflow-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: projectflow-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: projectflow-db
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: projectflow-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: projectflow-db
+          property: password
+
+databases:
+  - name: projectflow-db
+    databaseName: project_management
+    user: postgres
+    plan: free

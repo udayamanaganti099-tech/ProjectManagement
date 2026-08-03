@@ -7,12 +7,12 @@ spring:
   application:
     name: project-management-backend
 
-  # ── MySQL Database (MySQL Workbench) ──────────────────────────
+  # ── PostgreSQL Database ──────────────────────────
   datasource:
-    url: ${DB_URL:jdbc:mysql://localhost:3306/project_management?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC&createDatabaseIfNotExist=true}
-    username: ${DB_USERNAME:root}
-    password: ${DB_PASSWORD:UDAYreddy1210@}
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:project_management}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
 
   # ── JPA / Hibernate ───────────────────────────────────────────
   jpa:
@@ -22,7 +22,7 @@ spring:
     defer-datasource-initialization: true   # Run data.sql AFTER Hibernate creates tables
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
+        dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
 
   # ── Seed Data (data.sql) ──────────────────────────────────────
